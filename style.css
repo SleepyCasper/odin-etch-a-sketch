@@ -1,0 +1,75 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    outline: red solid 2px;
+}
+
+.title {
+    font-family: "Jua", sans-serif;
+    font-size: 46px;
+    text-align: center;
+    height: 10%;
+    padding: 1rem;
+}
+
+.text {
+    font-family: "Playwrite DE Grund", cursive;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.container-main {
+    display: flex;
+    justify-content: center;
+    height: 90%;
+    min-width: 600px;
+    flex-wrap: wrap;
+    margin: 1.5rem 0;
+}
+
+.container-menu {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-items: center;
+    gap: 1rem;
+}
+
+.container-grid {
+    width: 600px;
+    height: 600px;
+    min-width: 600px;
+    display: flex;
+    flex-wrap: wrap;
+    outline: solid black 5px;
+    margin-left: 6rem;
+}
+
+@media (max-width: 1000px) {
+    .container-menu {
+        flex-direction: row;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1rem;
+    }
+
+    .container-main {
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .container-grid {
+        margin: auto;
+    }
+}
+
+.grid-cell {
+    border: solid 1px black;
+    background-color: white;
+}
+
+.container-footer {
+    display: flex;
+    justify-content: center;
+}

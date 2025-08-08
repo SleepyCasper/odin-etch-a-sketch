@@ -2,19 +2,25 @@
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
-    <script src="scr.js" defer></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Jua&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playwrite+DE+Grund:wght@100..400&display=swap" rel="stylesheet">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Etch-a-Sketch</title>
 </head>
 <body>
+    <div class="title">Etch-a-Sketch</div>
+
     <div class="container-main">
-        <div class="title">Etch-a-Sketch</div>
         <div class="container-menu">
             <div class="container-size">
                 <div class="text">Change grid size</div>
-                <input type="range" id="size">
-                <div class="text size-text"></div>
+                <input type="range" id="size-range" min="0" max="100" value="0" step="4">
+                <div class="text size-text">Size: <output id="size-value"></output></div>
             </div>
 
             <div class="container-color">
@@ -22,11 +28,20 @@
                 <input type="color" name="" id="color">
             </div>
             
-            <button class="btn-rgb">Rainbow mode</button>
-            <button class="btn-eraser">Eraser</button>
-            <button class="btn-clear">Clear</button>
+            <button class="btn-classic text">Classic mode</button>
+            <button class="btn-rgb text">Rainbow mode</button>
+            <button class="btn-eraser text">Eraser</button>
+            <button class="btn-clear text">Clear</button>
         </div>
+
         <div class="container-grid"></div>
     </div>
+
+    <div class="container-footer">
+        <div class="text-footer">Made by <a href="https://github.com/SleepyCasper" target="_blank">SleepyCasper</a></div>
+        <button class="gitHub"></button>
+    </div>
+
+    <script src="scr.js" defer></script>
 </body>
 </html>
