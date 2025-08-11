@@ -1,3 +1,5 @@
+const GRID_SIZE_DEFAULT = 16;
+
 const gridContainer = document.querySelector('.container-grid');
 const sizeRange = document.querySelector('#size-range');
 const sizeValue = document.querySelector('#size-value');
@@ -9,6 +11,7 @@ const eraser = document.querySelector('.btn-eraser');
 const clear = document.querySelector('.btn-clear');
 
 let currentMode = 'classic';
+let currentColor = 'black';
 
 // Shows what size is chosen
 function updateSizeDisplay(value) {
@@ -17,8 +20,8 @@ function updateSizeDisplay(value) {
 
 // Check if mouse down
 let mousedown = false;
-document.body.addEventListener("mousedown", () => (mousedown = true));
-document.body.addEventListener("mouseup", () => (mousedown = false));
+document.body.onmousedown = () => (mousedown = true);
+document.body.onmouseup = () => (mousedown = false);
 
 // Creates grid
 function createGrid(size) {
@@ -34,27 +37,43 @@ function createGrid(size) {
     cell.style.width = `${cellSize}px`;
     cell.style.height = `${cellSize}px`;
     gridContainer.appendChild(cell);
-
-    // "Draw" in different modes
-    cell.addEventListener("mouseenter", () => {
-      if(mousedown) {
-        if(currentMode === 'classic') {
-          cell.style.backgroundColor = 'black';
-        } else if(currentMode === 'erase') {
-          cell.style.backgroundColor = 'white';
-        }
-      }
-    });
+    cell.addEventListener('mouseover', changeColor);
+    cell.addEventListener('mousedown', changeColor);
   }
-  
 }
 
-updateSizeDisplay(sizeRange.value);
+// "Draw" in different modes
+function changeColor(e) {
+  e.preventDefault();
+  
+  if (e.type === 'mouseover' && !mousedown) return;
+  switch(currentMode) {
+    case 'classic':
+      e.target.style.backgroundColor = currentColor;
+      break;
+    case 'erase':
+      e.target.style.backgroundColor = 'white';
+      break;
+    case 'rainbow':
+      const randomR = Math.floor(Math.random() * 256)
+      const randomG = Math.floor(Math.random() * 256)
+      const randomB = Math.floor(Math.random() * 256)
+      e.target.style.backgroundColor = `rgb(${randomR}, ${randomG}, ${randomB})`
+  }}
+
+
+createGrid(GRID_SIZE_DEFAULT);
+updateSizeDisplay(GRID_SIZE_DEFAULT);
 
 // Update size on input
 sizeRange.addEventListener("input", (event) => {
   updateSizeDisplay(event.target.value)
   createGrid(event.target.value);
+});
+
+//Picks a color
+colorPicker.addEventListener("input", () => {
+  currentColor = colorPicker.value;
 });
 
 classic.addEventListener("click", () => {
@@ -64,6 +83,11 @@ classic.addEventListener("click", () => {
 eraser.addEventListener("click", () => {
   currentMode = 'erase';
 });
+
+rgb.addEventListener("click", () => {
+  currentMode = 'rainbow'
+}
+)
 
 clear.addEventListener("click", () => {
   const cells = document.querySelectorAll('.grid-cell');
