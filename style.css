@@ -171,3 +171,11 @@ body {
     background-color: var(--pink-light);
     border-color: var(--pink-dark);
 }
+
+.text-footer {
+    font-family: 'Roboto', sans-serif;
+}
+
+.text-footer a {
+    color: black;
+}
