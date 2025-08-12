@@ -2,7 +2,78 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    outline: red solid 2px;
+    /* outline: red solid 2px; */
+}
+
+:root {
+    --pink-light: #FFC8DD;
+    --pink-dark: #FFAFCC;
+    --blue-light: #BDE0FE;
+    --blue-dark: #A2D2FF;
+    --purple: #BD9FD0;
+}
+
+body {
+    background-color: #E3D6EB;
+}
+
+#color {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-color: transparent;
+    width: 6rem;
+    height: 4rem;
+    border: none;
+    cursor: pointer;
+    align-self: center;
+}
+
+#color::-webkit-color-swatch {
+    border-radius: 1rem;
+    border: none;
+}
+
+#color::-moz-color-swatch {
+    border-radius: 1rem;
+    border: none;
+}
+
+#size-range {
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    cursor: pointer;
+    width: 9rem;
+    padding: 0.5rem;
+}
+
+#size-range::-webkit-slider-runnable-track {
+    height: 10px;
+    background: white;
+    border: solid 2px var(--purple);
+    border-radius: 4px;
+}
+
+#size-range::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    margin-top: -6px;
+    background: #BD9FD0;
+    border-radius: 50%;
+}
+
+#size-range::-moz-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    height: 20px;
+    width: 20px;
+    margin-top: -6px;
+    background: #BD9FD0;
+    border: none;
+    border-radius: 50%;
 }
 
 .title {
@@ -11,12 +82,16 @@
     text-align: center;
     height: 10%;
     padding: 1rem;
+    cursor: pointer;
 }
 
 .text {
     font-family: "Playwrite DE Grund", cursive;
     font-size: 18px;
     font-weight: 600;
+}
+.size-text {
+    font-size: 16px;
 }
 
 .container-main {
@@ -36,14 +111,24 @@
     gap: 1rem;
 }
 
+.container-size,
+.container-color {
+    display: flex;
+    flex-direction: column;
+    align-self: center;
+    align-items: center;
+    gap: 0.3rem;
+}
+
 .container-grid {
     width: 600px;
     height: 600px;
     min-width: 600px;
     display: flex;
     flex-wrap: wrap;
-    outline: solid black 5px;
+    outline: solid var(--purple) 5px;
     margin-left: 6rem;
+
 }
 
 @media (max-width: 1000px) {
@@ -72,4 +157,17 @@
 .container-footer {
     display: flex;
     justify-content: center;
+}
+
+.container-menu button {
+    height: 4rem;
+    padding: 0 1rem;
+    background-color: var(--blue-light);
+    border: solid 4px var(--blue-dark);
+    border-radius: 1rem;
+}
+
+.container-menu button:hover {
+    background-color: var(--pink-light);
+    border-color: var(--pink-dark);
 }
